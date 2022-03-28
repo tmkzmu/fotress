@@ -100,8 +100,6 @@ class FortressTest extends BaseTestCase
         $this->putJson(route('update-profile'), $newUserData)->assertOk();
         $this->assertDatabaseHas('users', [
             'email' => $newUserData['email'],
-            'first_name'  => $newUserData['first_name'],
-            'last_name'  => $newUserData['last_name'],
         ]);
     }
 
