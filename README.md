@@ -1,6 +1,9 @@
 # Fortress
 
-This package provides an easy elegant way to create all necessary endpoints for registration and authorization API.
+![PHP from Packagist](https://img.shields.io/packagist/php-v/laravel/laravel?style=flat-square)
+![Laravel version](https://img.shields.io/badge/Laravel->%3D8.0-green?style=flat-square)
+
+This package provides an easy elegant way to create all necessary endpoints for registration and authorization API for Laravel applications.
 * user registration
 * login
 * email verification

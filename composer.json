@@ -1,6 +1,6 @@
 {
     "name": "tmkzmu/fortress",
-    "description": "Handle basic auth actions for API",
+    "description": "Handle basic auth actions for API in Laravel applications",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
