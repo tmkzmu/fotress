@@ -21,10 +21,4 @@ trait VerifyEmailTrait
     {
         return $this->token;
     }
-
-    public function markEmailAsVerified()
-    {
-        $this->email_verified_at = now();
-        $this->save();
-    }
 }

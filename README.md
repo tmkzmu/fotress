@@ -35,6 +35,9 @@ All of them have their own default logic. Rest (endpoints, controllers, migratio
 
 Execute ```php artisan migrate``` to run migrations.
 
+#### Add traits
+If you would like to use email verification add `Tmkzmu\Fortress\Traits\VerifyEmailTrait` trait and Laravel `MustVerifyEmail` interface  to your `User` model.
+
 ## Configuration
 Configuration file (`fortress.php`) is stored in `config` folder.
 
@@ -49,12 +52,14 @@ There are several configurations:
   * `reset_password_throttle` - throttle requests for password reset endpoint
   * `paths` - an endpoint paths for Actions
 * `auth`
-  * `verification_expire` - and the expiration time for mail verification URL
+  * `verification_expire` - the expiration time for mail verification URL
 * `emails` - mail endpoints configuration
   * `callback_url` - an url for emails Actions
   * `email_verification_prefix` - a path for the email verification endpoint
   * `password_reset_prefix`- a path for the password reset endpoint
 
+## Tests
+All endpoint are tested. You can use package tests by e.g. extend your test by class `Tmkzmu\Fortress\Feature\FortressTest`
 
 ## License
 MIT
