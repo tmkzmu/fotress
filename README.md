@@ -20,7 +20,7 @@ This package provides an easy elegant way to create all necessary endpoints for 
 
 ```php artisan vendor:publish --provider="Tmkzmu\Fortress\FortressServiceProvider"```
 
-This command will publish all Action classes to `app\Actions\Fortress\Folder`. There are several actions:
+This command will publish all Action classes to `app\Actions\Fortress` folder. There are several actions:
 
 * `Register`
 * `Login`
@@ -48,8 +48,10 @@ There are several configurations:
   * `prefix` - define the prefix for routes (e.g. `api/v1`)
   * `middleware` - a middleware for all routes
   * `auth_middleware` - a middleware name to protect endpoints for authenticated users only
-  * `login_throttle` - throttle requests for login endpoint
-  * `reset_password_throttle` - throttle requests for password reset endpoint
+  * `throttle` - throttle requests for endpoints:
+    * `login`
+    * `email_verification`
+    * `reset_password`
   * `paths` - an endpoint paths for Actions
 * `auth`
   * `verification_expire` - the expiration time for mail verification URL

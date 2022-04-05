@@ -49,7 +49,6 @@ class PasswordReset
         if ($status !== Password::PASSWORD_RESET) {
             return response(__($status), Response::HTTP_OK);
         }
-        //Todo: use trait method
-        return response(['access_token' => $entity->createToken('api')]);
+        return response(['access_token' => $entity->createToken('web_api')->plainTextToken]);
     }
 }
