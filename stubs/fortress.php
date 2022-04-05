@@ -48,9 +48,9 @@ return [
         'middleware'      => ['api'],
         'auth_middleware' => ['auth'],
         'throttle'        => [
-            'login'              => '3,5',
-            'email_verification' => '3,5',
-            'reset_password'     => '3,5',
+            'login'              => '4,5',
+            'email_verification' => '4,5',
+            'reset_password'     => '4,5',
         ],
         'paths'           => [
             Features::REGISTER           => 'register',

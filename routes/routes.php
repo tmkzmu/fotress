@@ -13,13 +13,15 @@ if (Features::isFeatureEnabled(Features::LOGIN)) {
 }
 
 if (Features::isFeatureEnabled(Features::EMAIL_VERIFICATION)) {
-    Route::post(Features::getUriFor(Features::EMAIL_VERIFICATION), [Features::getControllerClass(), 'askEmailVerificationEmail'])->name('verification.ask')->middleware(config('fortress.routes.auth_middleware'), 'throttle:' . config('fortress.routes.throttle.email_verification'));
-    Route::get(Features::getUriFor(Features::EMAIL_VERIFICATION), [Features::getControllerClass(), 'emailVerification'])->name('verification.verify')->middleware(config('fortress.routes.auth_middleware'), 'throttle:' . config('fortress.routes.throttle.email_verification'));
+    Route::middleware(config('fortress.routes.auth_middleware'))->group(function () {
+        Route::post(Features::getUriFor(Features::EMAIL_VERIFICATION), [Features::getControllerClass(), 'askEmailVerificationEmail'])->name('verification.ask')->middleware('throttle:' . config('fortress.routes.throttle.email_verification'));
+        Route::get(Features::getUriFor(Features::EMAIL_VERIFICATION), [Features::getControllerClass(), 'emailVerification'])->name('verification.verify')->middleware('throttle:' . config('fortress.routes.throttle.email_verification'));
+    });
 }
 
 if (Features::isFeatureEnabled(Features::PASSWORD_RESET)) {
     Route::post(Features::getUriFor(Features::PASSWORD_RESET) . '/ask', [Features::getControllerClass(), 'askResetPassword'])->name('reset-password.ask')->middleware('throttle:' . config('fortress.routes.throttle.reset_password'));
-    Route::post(Features::getUriFor(Features::PASSWORD_RESET), [Features::getControllerClass(), 'resetPassword'])->name('reset-password.reset');
+    Route::post(Features::getUriFor(Features::PASSWORD_RESET), [Features::getControllerClass(), 'resetPassword'])->name('reset-password.reset')->middleware('throttle:' . config('fortress.routes.throttle.reset_password'));
 }
 
 if (Features::isFeatureEnabled(Features::UPDATE_PASSWORD)) {
