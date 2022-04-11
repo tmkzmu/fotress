@@ -13,9 +13,9 @@ if (Features::isFeatureEnabled(Features::LOGIN)) {
 }
 
 if (Features::isFeatureEnabled(Features::EMAIL_VERIFICATION)) {
-    Route::middleware(config('fortress.routes.auth_middleware'))->group(function () {
-        Route::post(Features::getUriFor(Features::EMAIL_VERIFICATION), [Features::getControllerClass(), 'askEmailVerificationEmail'])->name('verification.ask')->middleware('throttle:' . config('fortress.routes.throttle.email_verification'));
-        Route::get(Features::getUriFor(Features::EMAIL_VERIFICATION), [Features::getControllerClass(), 'emailVerification'])->name('verification.verify')->middleware('throttle:' . config('fortress.routes.throttle.email_verification'));
+    Route::middleware('throttle:' . config('fortress.routes.throttle.email_verification'))->group(function () {
+        Route::post(Features::getUriFor(Features::EMAIL_VERIFICATION), [Features::getControllerClass(), 'askEmailVerificationEmail'])->name('verification.ask')->middleware(config('fortress.routes.auth_middleware'));
+        Route::get(Features::getUriFor(Features::EMAIL_VERIFICATION), [Features::getControllerClass(), 'emailVerification'])->name('verification.verify');
     });
 }
 
