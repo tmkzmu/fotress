@@ -44,15 +44,16 @@ return [
     */
 
     'routes' => [
-        'prefix'          => '',
-        'middleware'      => ['api'],
-        'auth_middleware' => ['auth'],
-        'throttle'        => [
+        'prefix'                        => '',
+        'middleware'                    => ['api'],
+        'auth_middleware'               => ['auth'],
+        'email_verification_middleware' => ['auth'],
+        'throttle'                      => [
             'login'              => '4,5',
             'email_verification' => '4,5',
             'reset_password'     => '4,5',
         ],
-        'paths'           => [
+        'paths'                         => [
             Features::REGISTER           => 'register',
             Features::LOGIN              => 'login',
             Features::LOGOUT             => 'logout',
